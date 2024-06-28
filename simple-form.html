@@ -1,0 +1,36 @@
+<form id="formElem">
+  <input type="text" name="name" value="John">
+  <input type="text" name="surname" value="Smith">
+  <input type="submit">
+</form>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const formElem = document.getElementById('formElem');
+
+    formElem.addEventListener('submit', )
+  })
+  formElem.onsubmit = async (e) => {
+    e.preventDefault();
+
+    let formData = new FormData(formElem);
+    let formDataObj = {}
+
+    formData.forEac((value, key) => {
+      formDataObj[key] = value;
+    });
+
+    let url = 'http://localhost:3000/';
+    let req = new Request(url, {
+      body: formData,
+      method: 'POST', 
+    });
+    fetch(req)
+      .then((res) => res.json())
+      .then((data) => {
+          console.log('Response from server');
+          console.log(data);
+      })
+      .catch(console.warn);
+  };
+</script>
